@@ -426,34 +426,53 @@ footer a:hover{color:var(--text-secondary)}
 <p>&#169; 2026 VO2 Plan. All rights reserved.</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-var nav=document.getElementById('nav');
-window.addEventListener('scroll',function(){
-nav.classList.toggle('scrolled',window.scrollY>20);
+var nav=document.getElementById("nav");
+window.addEventListener("scroll",function(){
+nav.classList.toggle("scrolled",window.scrollY>20);
 });
 
 var observer=new IntersectionObserver(function(entries){
 entries.forEach(function(entry){
-if(entry.isIntersecting)entry.target.classList.add('visible');
+if(entry.isIntersecting)entry.target.classList.add("visible");
 });
-},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.fade-up').forEach(function(el){observer.observe(el)});
+},{threshold:0.1,rootMargin:"0px 0px -40px 0px"});
+document.querySelectorAll(".fade-up").forEach(function(el){observer.observe(el)});
+
+var supabaseClient=window.supabase.createClient(
+"https://otcdtomlaftdioqvqnpb.supabase.co",
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90Y2R0b21sYWZ0ZGlvcXZxbnBiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1MzgyODAsImV4cCI6MjA5MDExNDI4MH0.KEDtGg9Iz40k6biLaH9m3tL1m43Henpb1OnfGBw5MCU"
+);
 
 function handleSubmit(formId,successId){
 var form=document.getElementById(formId);
 var success=document.getElementById(successId);
-form.addEventListener('submit',function(e){
+form.addEventListener("submit",async function(e){
 e.preventDefault();
-var email=form.querySelector('input[type="email"]').value;
-console.log('Waitlist signup:',email);
-form.style.display='none';
-success.classList.add('show');
-var note=form.parentElement.querySelector('.form-note');
-if(note)note.style.display='none';
+var btn=form.querySelector("button");
+var email=form.querySelector("input[type=email]").value;
+btn.textContent="Joining...";
+btn.disabled=true;
+var result=await supabaseClient.from("waitlist").insert([{email:email}]);
+if(result.error&&result.error.code==="23505"){
+form.style.display="none";
+success.innerHTML="<p>You are already on the list!</p>";
+success.classList.add("show");
+}else if(result.error){
+btn.textContent="Join Waitlist";
+btn.disabled=false;
+alert("Something went wrong. Please try again.");
+}else{
+form.style.display="none";
+success.classList.add("show");
+}
+var note=form.parentElement.querySelector(".form-note");
+if(note)note.style.display="none";
 });
 }
-handleSubmit('heroForm','heroSuccess');
-handleSubmit('ctaForm','ctaSuccess');
+handleSubmit("heroForm","heroSuccess");
+handleSubmit("ctaForm","ctaSuccess");
 </script>
 </body>
 </html>
