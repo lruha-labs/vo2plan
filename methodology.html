@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training Methodology — VO2 Plan</title>
+<meta name="description" content="The evidence basis behind VO2 Plan's training approach. What the research says, what we're claiming, and what we're not.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#000000;--bg-card:#1C1C1E;--bg-elevated:#2C2C2E;
+--text:#FFFFFF;--text-secondary:#AEAEB2;--text-muted:#636366;
+--green:#30D158;--blue:#0A84FF;--red:#FF453A;--orange:#FF9F0A;--teal:#64D2FF;
+--border:rgba(255,255,255,0.08);--border-strong:rgba(255,255,255,0.15);
+--font-display:'Instrument Serif',Georgia,serif;
+--font-body:'DM Sans',-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.7}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:720px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--font-body);font-weight:700;font-size:20px;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-mark{width:32px;height:32px;border-radius:8px;overflow:hidden}.logo-mark img{width:100%;height:100%;object-fit:cover}
+.nav-back{color:var(--text-secondary);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s}
+.nav-back:hover{color:var(--text)}
+
+.hero{max-width:720px;margin:0 auto;padding:120px 24px 48px}
+.hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,48px);line-height:1.1;font-weight:400;margin-bottom:16px;letter-spacing:-0.5px}
+.hero h1 em{font-style:italic;color:var(--blue)}
+.hero-sub{font-size:17px;color:var(--text-secondary);max-width:560px;margin-bottom:8px}
+.hero-note{font-size:14px;color:var(--text-muted);margin-top:24px;padding-top:24px;border-top:1px solid var(--border)}
+
+article{max-width:720px;margin:0 auto;padding:0 24px 100px}
+
+.section{margin-bottom:56px}
+.section-label{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:4px 10px;border-radius:6px;margin-bottom:16px}
+.section-label.research{background:rgba(48,209,88,0.12);color:var(--green)}
+.section-label.convention{background:rgba(255,159,10,0.12);color:var(--orange)}
+.section-label.practical{background:rgba(10,132,255,0.12);color:var(--blue)}
+
+.section h2{font-family:var(--font-display);font-size:28px;font-weight:400;line-height:1.2;margin-bottom:16px}
+.section p{font-size:16px;color:var(--text-secondary);margin-bottom:16px}
+.section p strong{color:var(--text);font-weight:600}
+
+.evidence-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin:20px 0}
+.evidence-card p{margin-bottom:8px}
+.evidence-card p:last-child{margin-bottom:0}
+.citation{font-size:14px;color:var(--text-muted);font-style:italic}
+
+.honest-box{background:var(--bg-card);border-left:3px solid var(--orange);border-radius:0 12px 12px 0;padding:20px 24px;margin:24px 0}
+.honest-box h3{font-size:15px;font-weight:700;color:var(--orange);margin-bottom:8px}
+.honest-box p{font-size:14px;color:var(--text-secondary);margin-bottom:8px}
+.honest-box p:last-child{margin-bottom:0}
+
+.protocol-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.protocol-item{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px}
+.protocol-item h3{font-size:17px;font-weight:700;margin-bottom:4px}
+.protocol-item .spec{font-size:14px;color:var(--blue);font-weight:600;margin-bottom:8px}
+.protocol-item p{font-size:14px;color:var(--text-secondary);margin-bottom:0}
+
+.divider{height:1px;background:var(--border);margin:48px 0}
+
+.references{margin-top:56px}
+.references h2{font-family:var(--font-display);font-size:24px;margin-bottom:20px}
+.ref-list{list-style:none;counter-reset:ref}
+.ref-list li{counter-increment:ref;font-size:14px;color:var(--text-muted);margin-bottom:12px;padding-left:28px;position:relative;line-height:1.5}
+.ref-list li::before{content:counter(ref) ".";position:absolute;left:0;color:var(--text-muted);font-weight:600;font-size:13px}
+
+footer{max-width:720px;margin:0 auto;padding:40px 24px;border-top:1px solid var(--border)}
+footer p{font-size:13px;color:var(--text-muted)}
+footer a{color:var(--text-muted);text-decoration:none}
+footer a:hover{color:var(--text-secondary)}
+
+@media(max-width:600px){
+.protocol-grid{grid-template-columns:1fr}
+.hero h1{font-size:32px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="/" class="logo"><div class="logo-mark"><img src="data:image/png;base64,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" alt="VO2 Plan"></div>VO2 Plan</a>
+<a href="/" class="nav-back">&larr; Back to home</a>
+</div>
+</nav>
+
+<header class="hero">
+<h1>Training <em>Methodology</em></h1>
+<p class="hero-sub">The research behind how VO2 Plan trains you — what we're drawing from, what we're claiming, and what we're not.</p>
+<p class="hero-note">We believe in being transparent about what the science says and where our judgment fills the gaps. Every decision in the app falls into one of three categories: <strong style="color:#30D158">directly supported by peer-reviewed research</strong>, <strong style="color:#FF9F0A">derived from established coaching convention</strong>, or <strong style="color:#0A84FF">a practical design choice</strong> for a consumer app. We label each one below.</p>
+</header>
+
+<article>
+
+<!-- SECTION: The core evidence -->
+<div class="section">
+<span class="section-label research">Supported by Research</span>
+<h2>High-intensity intervals improve VO2 max — and interval duration matters</h2>
+<p>The foundation of VO2 Plan's training approach comes from a body of research showing that high-intensity interval training produces meaningful improvements in VO2 max — the maximum rate at which your body can use oxygen during exercise, and one of the strongest predictors of cardiovascular health and longevity.</p>
+<p>The most directly relevant study for our approach is Helgerud et al. (2007), which compared four training methods in moderately trained individuals over 8 weeks. The group performing 4-minute intervals at 85–95% of maximum heart rate achieved a <strong>7.2% improvement in VO2 max</strong>, outperforming the other protocols tested — including shorter intervals, lactate threshold training, and long slow distance.</p>
+<p>A meta-analysis of 37 studies (Bacon et al., 2013) found that <strong>longer intervals of 3–5 minutes generally produced the largest VO2 max gains</strong> across formats studied. A separate meta-analysis of 53 randomized controlled trials (Wen et al., 2019) confirmed that intervals of 2 minutes or longer showed the greatest improvements when compared to moderate-intensity continuous training.</p>
+<div class="evidence-card">
+<p><strong>What the study actually did:</strong> 40 moderately trained male university students (average age ~25, already exercising 3+ times per week) were randomly assigned to four groups. Each trained 3 times per week for 8 weeks on a treadmill. All sessions were matched for total energy expenditure. There was no Zone 2 component, no base phase, no periodization. Each group did only their assigned protocol for 8 straight weeks.</p>
+<p class="citation">Helgerud, J., Høydal, K., Wang, E., et al. (2007). "Aerobic high-intensity intervals improve VO2max more than moderate training." Medicine &amp; Science in Sports &amp; Exercise, 39(4), 665–671.</p>
+</div>
+<div class="honest-box">
+<h3>What we're not claiming</h3>
+<p>We're not claiming this specific interval format is the single best protocol for all people in all contexts. Interval training research uses many effective formats, and there is no universal consensus that exactly 4 minutes is optimal. What we can say is that it's <strong>one of the most studied and effective protocols</strong> for improving VO2 max, with a strong evidence base across multiple populations.</p>
+</div>
+</div>
+
+<!-- SECTION: Frequency -->
+<div class="section">
+<span class="section-label research">Supported by Research</span>
+<h2>Training frequency: 3 sessions per week</h2>
+<p>The Helgerud study used 3 interval sessions per week. We default to 3 because <strong>that's what was actually tested</strong> and produced the results.</p>
+<p>A recent frequency comparison (Sperlich et al., 2025) tested 1, 2, and 3 weekly sessions of the same protocol in recreationally active individuals. Both 2 and 3 sessions produced meaningful improvements, with 3 showing the strongest effects. A larger meta-analysis (Chen et al., 2025) confirmed that 3 sessions per week consistently produced stronger outcomes across study designs.</p>
+<p>If you can only fit 2 sessions into your week, you're still training effectively. But the default is 3, because that's the frequency with the most direct evidence behind it.</p>
+</div>
+
+<!-- SECTION: Multiple protocols -->
+<div class="section">
+<span class="section-label research">Supported by Research</span> + <span class="section-label convention">Coaching Convention</span>
+<h2>Shorter intervals as a starting point, longer intervals as the goal</h2>
+<p>Not everyone is ready for high-intensity 4-minute intervals on day one. VO2 Plan uses a progression approach, starting with shorter, more tolerable interval formats and building toward longer ones as your conditioning improves.</p>
+<p>Research by Billat (2000) demonstrated that shorter alternating intervals can accumulate meaningful time near VO2 max while producing lower lactate accumulation. This makes them a practical starting point for people new to high-intensity training, though it's worth noting that most of this research involved small samples of trained athletes — the "better for beginners" inference is practical, not directly tested.</p>
+<p>The specific way we sequence these formats — which intervals you start with, when you progress, and how the plan adapts to your fitness level — is our own system, built on the principle that <strong>everyone should progress toward the interval format with the strongest evidence base</strong>.</p>
+
+<div class="protocol-grid">
+<div class="protocol-item">
+<h3>Short Intervals</h3>
+<div class="spec">30-second alternating format</div>
+<p>Developed by Billat (2000). More tolerable entry point while still reaching high oxygen demand. Used as an introductory format for newer exercisers.</p>
+</div>
+<div class="protocol-item">
+<h3>Long Intervals</h3>
+<div class="spec">3–4 minute sustained efforts</div>
+<p>The format with the strongest evidence for VO2 max improvement. Intervals in the 2–5 minute range consistently produce the largest gains in meta-analyses. This is where the plan progresses you toward.</p>
+</div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION: Zone 2 -->
+<div class="section">
+<span class="section-label research">Supported by Research</span> + <span class="section-label practical">Practical Design Choice</span>
+<h2>Zone 2 training supports your health — separately from VO2 max</h2>
+<p>Zone 2 training — sustained effort at conversational pace — builds mitochondrial density, improves fat oxidation, and supports cardiovascular health. These benefits are well-established in exercise physiology.</p>
+<p>However, <strong>no controlled trial has tested "intervals plus Zone 2" against "intervals alone"</strong> for VO2 max improvement. The study that produced the headline results used only intervals, with no Zone 2 component.</p>
+<p>We include Zone 2 sessions because they're good for your health independently. But we're transparent: <strong>the intervals drive your VO2 max improvement. Zone 2 supports your overall cardiovascular fitness.</strong> If you miss a Zone 2 session, it's not a setback to your VO2 max progress.</p>
+</div>
+
+<!-- SECTION: Base phase -->
+<div class="section">
+<span class="section-label convention">Coaching Convention</span>
+<h2>Building an aerobic foundation before high-intensity work</h2>
+<p>For newer exercisers, the plan includes an initial period of lower-intensity training before introducing intervals. This is standard coaching practice — not from a VO2 max-specific study — based on the practical reality that beginners without an aerobic foundation face higher injury risk and higher perceived exertion during intervals, both of which hurt adherence.</p>
+<p>More experienced users skip this phase and begin intervals immediately.</p>
+</div>
+
+<!-- SECTION: Recovery weeks -->
+<div class="section">
+<span class="section-label convention">Coaching Convention</span>
+<h2>Periodic reduced-volume weeks</h2>
+<p>The plan includes periodic weeks with reduced interval volume. The Helgerud study ran continuously with no reduced weeks, so this is a <strong>precaution for our target demographic</strong> — unsupervised adults managing training alongside life demands — not a requirement from the core research.</p>
+<p>Research on periodic volume reduction comes primarily from strength training (Bell et al., 2023) and has not been directly validated for aerobic interval programs. We include it because it's widely accepted coaching practice for managing accumulated fatigue in self-coached athletes.</p>
+</div>
+
+<!-- SECTION: Adaptive -->
+<div class="section">
+<span class="section-label practical">Practical Design Choice</span>
+<h2>The plan responds to how you're actually training</h2>
+<p>If you consistently complete intervals in your target heart rate zone, the plan maintains your progression. If you struggle, it adjusts. This is our substitute for having a coach monitor your training.</p>
+<p>This adaptive behavior is not from a specific study — <strong>no randomized trials exist on adaptive interval programming apps.</strong> But we consider it one of the most important features, because a plan that doesn't respond to reality isn't a useful plan.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION: What we are -->
+<div class="section">
+<h2>What VO2 Plan is — and isn't</h2>
+<p>VO2 Plan is an <strong>evidence-informed, coaching-optimized training system.</strong> It is not a clinical protocol replication. We've taken the strongest available research — particularly around interval duration, intensity, and frequency — and built a structured training system around it, filling gaps with established coaching practice and practical design choices for a consumer app.</p>
+<p>We think that's the right approach. But we also think you deserve to know what's research and what's our judgment. That's what this page is for.</p>
+<p>If you'd like more detail on any aspect of our training methodology, contact us at <a href="mailto:hello@vo2plan.com" style="color:var(--blue);text-decoration:none">hello@vo2plan.com</a>.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- REFERENCES -->
+<div class="references">
+<h2>References</h2>
+<ol class="ref-list">
+<li>Helgerud, J., Høydal, K., Wang, E., et al. (2007). "Aerobic high-intensity intervals improve VO2max more than moderate training." <em>Medicine &amp; Science in Sports &amp; Exercise</em>, 39(4), 665–671.</li>
+<li>Billat, V.L., Slawinski, J., Bocquet, V., et al. (2000). "Intermittent runs at the velocity associated with maximal oxygen uptake enables subjects to remain at maximal oxygen uptake for a longer time than intense but submaximal runs." <em>European Journal of Applied Physiology</em>, 81(3), 188–196.</li>
+<li>Bacon, A.P., Carter, R.E., Ogle, E.A., &amp; Joyner, M.J. (2013). "VO2max trainability and high intensity interval training in humans: A meta-analysis." <em>PLoS ONE</em>, 8(9), e73182.</li>
+<li>Wen, D., Utesch, T., Wu, J., et al. (2019). "Effects of different protocols of high intensity interval training for VO2max improvements in adults: A meta-analysis of randomised controlled trials." <em>Journal of Science and Medicine in Sport</em>, 22(8), 941–947.</li>
+<li>Sperlich, B., Lenk, M., Matzka, M., et al. (2025). "Impact of weekly frequency of high-intensity interval training on cardiorespiratory, metabolic, and performance measures in recreational runners — An exploratory study." <em>Physiological Reports</em>.</li>
+<li>Chen, X., et al. (2025). "Comparison of different interval training methods on athletes' oxygen uptake: a systematic review with pairwise and network meta-analysis." <em>BMC Sports Science, Medicine and Rehabilitation</em>.</li>
+<li>Stöggl, T., &amp; Sperlich, B. (2014). "Polarized training has greater impact on key endurance variables than threshold, high-intensity, or high-volume training." <em>Frontiers in Physiology</em>, 5, 33.</li>
+<li>Bell, L., et al. (2023). "Integrating deloading into strength and physique sports training programmes: An international Delphi consensus approach." <em>Frontiers in Sports and Active Living</em>.</li>
+<li>Wisløff, U., Støylen, A., Loennechen, J.P., et al. (2007). "Superior cardiovascular effect of aerobic interval training versus moderate continuous training in heart failure patients." <em>Circulation</em>, 115(24), 3086–3094.</li>
+</ol>
+</div>
+
+</article>
+
+<footer>
+<p>&copy; 2026 VO2 Plan &middot; <a href="/privacy">Privacy Policy</a> &middot; <a href="/terms">Terms of Service</a> &middot; <a href="mailto:hello@vo2plan.com">Contact</a></p>
+<p style="margin-top:12px">VO2 Plan provides general fitness information and structured training schedules. It is not medical advice and is not a substitute for professional medical guidance. Consult your physician before beginning any exercise program.</p>
+</footer>
+
+</body>
+</html>
