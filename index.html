@@ -4,265 +4,269 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VO2 Plan - Turn Your VO2 Max Score Into a Longevity Training Plan</title>
-<meta name="description" content="Your Apple Watch measures your VO2 max. VO2 Plan gives you the science-backed training program to improve it.">
+<meta name="description" content="Your Apple Watch measures your VO2 max. VO2 Plan gives you the structured training program to improve it.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
---bg:#FAFAF8;--bg-warm:#F5F3EE;--text:#1A1A1A;--text-secondary:#5A5A58;--text-muted:#8A8A86;
---accent:#0EA5E9;--accent-deep:#0284C7;--accent-glow:rgba(14,165,233,0.12);
---teal:#0D9488;--teal-soft:rgba(13,148,136,0.08);
---coral:#F97066;--coral-soft:rgba(249,112,102,0.08);
---green:#22C55E;--green-soft:rgba(34,197,94,0.08);
---amber:#F59E0B;--amber-soft:rgba(245,158,11,0.08);
---border:rgba(0,0,0,0.06);--border-strong:rgba(0,0,0,0.1);
---card-bg:#FFFFFF;--radius:16px;
---font-display:'Instrument Serif',Georgia,serif;
---font-body:'DM Sans',-apple-system,sans-serif;
+--bg:#000;--bg-card:#1C1C1E;--bg-elevated:#2C2C2E;
+--text:#F5F5F7;--text-sec:#A1A1A6;--text-dim:#636366;
+--green:#30D158;--green-bg:rgba(48,209,88,0.12);
+--blue:#0A84FF;--blue-bg:rgba(10,132,255,0.12);
+--red:#FF453A;--red-bg:rgba(255,69,58,0.12);
+--orange:#FF9F0A;--orange-bg:rgba(255,159,10,0.12);
+--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
+--r:16px;
+--serif:'Instrument Serif',Georgia,serif;
+--sans:'DM Sans',-apple-system,sans-serif;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--font-body);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s}
-nav.scrolled{box-shadow:0 1px 20px rgba(0,0,0,0.06)}
-.nav-inner{max-width:1120px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:var(--font-body);font-weight:700;font-size:20px;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
-.logo-mark{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--teal));display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;letter-spacing:0.5px}
-.nav-cta{background:var(--text);color:white;border:none;border-radius:100px;padding:10px 22px;font-family:var(--font-body);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;text-decoration:none}
-.nav-cta:hover{background:#333;transform:translateY(-1px)}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:700;font-size:20px;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo img{width:32px;height:32px;border-radius:7px}
+.nav-btn{background:var(--green);color:#000;border:none;border-radius:100px;padding:10px 22px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.2s}
+.nav-btn:hover{background:#3dd863;transform:translateY(-1px);box-shadow:0 4px 20px rgba(48,209,88,0.25)}
 
-.hero{max-width:1120px;margin:0 auto;padding:140px 24px 80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.hero-content{max-width:540px}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-glow);color:var(--accent-deep);padding:6px 14px;border-radius:100px;font-size:13px;font-weight:600;margin-bottom:24px;letter-spacing:0.2px}
-.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse-dot 2s ease-in-out infinite}
-@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
-.hero h1{font-family:var(--font-display);font-size:clamp(42px,5.5vw,64px);line-height:1.08;font-weight:400;color:var(--text);margin-bottom:20px;letter-spacing:-0.5px}
-.hero h1 em{font-style:italic;color:var(--accent-deep)}
-.hero-sub{font-size:18px;line-height:1.65;color:var(--text-secondary);margin-bottom:36px;max-width:460px}
-
+/* HERO */
+.hero{max-width:1120px;margin:0 auto;padding:130px 24px 80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-text{max-width:540px}
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-bg);color:var(--green);padding:6px 14px;border-radius:100px;font-size:13px;font-weight:600;margin-bottom:24px}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hero h1{font-family:var(--serif);font-size:clamp(40px,5.5vw,62px);line-height:1.08;font-weight:400;margin-bottom:20px;letter-spacing:-.5px}
+.hero h1 em{font-style:italic;color:var(--green)}
+.hero-sub{font-size:18px;line-height:1.65;color:var(--text-sec);margin-bottom:36px;max-width:460px}
 .email-form{display:flex;gap:10px;max-width:440px}
-.email-form input{flex:1;padding:14px 18px;border:1.5px solid var(--border-strong);border-radius:12px;font-family:var(--font-body);font-size:15px;background:white;color:var(--text);transition:border-color 0.2s,box-shadow 0.2s;outline:none}
-.email-form input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
-.email-form input::placeholder{color:var(--text-muted)}
-.email-form button{padding:14px 28px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:white;border:none;border-radius:12px;font-family:var(--font-body);font-size:15px;font-weight:600;cursor:pointer;transition:all 0.25s;white-space:nowrap}
-.email-form button:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(14,165,233,0.3)}
-.form-note{font-size:13px;color:var(--text-muted);margin-top:12px}
-.form-success{display:none;background:var(--green-soft);border:1px solid rgba(34,197,94,0.2);border-radius:12px;padding:16px 20px;max-width:440px}
-.form-success.show{display:block}
-.form-success p{color:#15803D;font-size:15px;font-weight:500}
+.email-form input{flex:1;padding:14px 18px;border:1.5px solid var(--border2);border-radius:12px;font-family:var(--sans);font-size:15px;background:var(--bg-card);color:var(--text);outline:none;transition:border-color .2s}
+.email-form input:focus{border-color:var(--green);box-shadow:0 0 0 3px var(--green-bg)}
+.email-form input::placeholder{color:var(--text-dim)}
+.email-form button{padding:14px 28px;background:var(--green);color:#000;border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+.email-form button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(48,209,88,.3)}
+.form-note{font-size:13px;color:var(--text-dim);margin-top:12px}
+.form-ok{display:none;background:var(--green-bg);border:1px solid rgba(48,209,88,.2);border-radius:12px;padding:16px 20px;max-width:440px}
+.form-ok.show{display:block}
+.form-ok p{color:var(--green);font-size:15px;font-weight:500}
 
-.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
-.phone-frame{width:280px;background:var(--card-bg);border-radius:32px;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,0.08),0 1px 3px rgba(0,0,0,0.04);padding:20px;position:relative;z-index:2}
-.phone-notch{width:80px;height:6px;background:var(--bg-warm);border-radius:100px;margin:0 auto 20px}
+/* PHONE MOCKUP */
+.hero-vis{position:relative;display:flex;justify-content:center;align-items:center}
+.phone{width:280px;background:var(--bg);border-radius:32px;border:1px solid var(--border2);box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 80px rgba(48,209,88,.03);padding:20px;position:relative;z-index:2}
+.phone-notch{width:80px;height:6px;background:var(--bg-card);border-radius:100px;margin:0 auto 20px}
 .phone-score{text-align:center;padding:24px 0 16px}
-.phone-score-label{font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
-.phone-score-value{font-family:var(--font-display);font-size:72px;color:var(--accent-deep);line-height:1}
-.phone-score-unit{font-family:var(--font-body);font-size:14px;color:var(--text-muted);font-weight:500}
-.phone-percentile{background:var(--green-soft);border-radius:8px;padding:8px 12px;margin:12px 0 20px;text-align:center}
-.phone-percentile span{font-size:13px;font-weight:600;color:#15803D}
+.phone-score-lbl{font-size:12px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
+.phone-score-val{font-family:var(--serif);font-size:72px;color:var(--green);line-height:1}
+.phone-score-unit{font-size:14px;color:var(--text-dim);font-weight:500}
+.phone-pct{background:var(--green-bg);border-radius:8px;padding:8px 12px;margin:12px 0 20px;text-align:center}
+.phone-pct span{font-size:13px;font-weight:600;color:var(--green)}
 .phone-chart{height:80px;margin:0 0 16px;overflow:hidden}
 .phone-chart svg{width:100%;height:100%}
-.phone-workout{background:var(--bg-warm);border-radius:10px;padding:12px;margin-bottom:8px}
-.phone-workout-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.phone-workout-title{font-size:12px;font-weight:600;color:var(--text)}
-.phone-workout-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:100px}
-.phone-workout-tag.hiit{background:var(--coral-soft);color:var(--coral)}
-.phone-workout-tag.z2{background:var(--teal-soft);color:var(--teal)}
-.phone-workout-tag.intervals{background:var(--amber-soft);color:var(--amber)}
-.phone-workout-detail{font-size:11px;color:var(--text-muted)}
+.phone-wo{background:var(--bg-card);border-radius:10px;padding:12px;margin-bottom:8px}
+.phone-wo-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.phone-wo-title{font-size:12px;font-weight:600}
+.phone-wo-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:100px}
+.phone-wo-tag.hiit{background:var(--red-bg);color:var(--red)}
+.phone-wo-tag.z2{background:var(--blue-bg);color:var(--blue)}
+.phone-wo-tag.int{background:var(--orange-bg);color:var(--orange)}
+.phone-wo-det{font-size:11px;color:var(--text-dim)}
+.fc{position:absolute;background:var(--bg-card);border-radius:14px;padding:14px 18px;box-shadow:0 8px 30px rgba(0,0,0,.4);border:1px solid var(--border2);z-index:3;animation:bob 4s ease-in-out infinite}
+.fc.tr{top:20px;right:-20px}
+.fc.bl{bottom:40px;left:-30px;animation-delay:1.5s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.fc-lbl{font-size:10px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.fc-val{font-size:22px;font-weight:700}
+.fc-val.g{color:var(--green)}
+.fc-val.b{color:var(--blue)}
+.fc-sub{font-size:11px;color:var(--text-dim)}
 
-.float-card{position:absolute;background:white;border-radius:14px;padding:14px 18px;box-shadow:0 8px 30px rgba(0,0,0,0.08),0 1px 3px rgba(0,0,0,0.04);border:1px solid var(--border);z-index:3;animation:float 4s ease-in-out infinite}
-.float-card.top-right{top:20px;right:-20px}
-.float-card.bottom-left{bottom:40px;left:-30px;animation-delay:1.5s}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.float-card-label{font-size:10px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
-.float-card-value{font-size:22px;font-weight:700}
-.float-card-value.green{color:var(--green)}
-.float-card-value.teal{color:var(--teal)}
-.float-card-sub{font-size:11px;color:var(--text-muted)}
+/* SECTIONS */
+.sec{padding:80px 24px}
+.sec-in{max-width:1120px;margin:0 auto}
+.sec-lbl{font-size:13px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
+.sec-title{font-family:var(--serif);font-size:clamp(30px,4vw,48px);line-height:1.15;margin-bottom:16px}
+.sec-sub{font-size:17px;line-height:1.6;color:var(--text-sec);max-width:560px;margin-bottom:48px}
 
-.problem-section{background:var(--bg);padding:80px 24px}
-.problem-inner{max-width:1120px;margin:0 auto}
-.problem-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:48px}
-.problem-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;text-align:center}
-.problem-emoji{font-size:32px;margin-bottom:16px;display:block}
-.problem-card h3{font-size:17px;font-weight:700;margin-bottom:8px;color:var(--text)}
-.problem-card p{font-size:14px;line-height:1.6;color:var(--text-secondary)}
+/* PROBLEM */
+.prob{background:var(--bg);padding:80px 24px}
+.prob-in{max-width:1120px;margin:0 auto}
+.prob-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:48px}
+.prob-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:28px 24px;text-align:center;transition:border-color .2s}
+.prob-card:hover{border-color:var(--border2)}
+.prob-emoji{font-size:32px;margin-bottom:16px;display:block}
+.prob-card h3{font-size:17px;font-weight:700;margin-bottom:8px}
+.prob-card p{font-size:14px;line-height:1.6;color:var(--text-sec)}
 
-section{padding:80px 24px}
-.section-inner{max-width:1120px;margin:0 auto}
-.section-label{font-size:13px;font-weight:600;color:var(--accent-deep);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
-.section-title{font-family:var(--font-display);font-size:clamp(32px,4vw,48px);line-height:1.15;margin-bottom:16px;color:var(--text)}
-.section-sub{font-size:17px;line-height:1.6;color:var(--text-secondary);max-width:560px;margin-bottom:48px}
-
-.protocols-section{background:var(--bg-warm)}
-.protocols-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.protocol-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;transition:all 0.3s;overflow:hidden}
-.protocol-card:hover{border-color:var(--border-strong);box-shadow:0 8px 30px rgba(0,0,0,0.06);transform:translateY(-2px)}
-.protocol-card.featured{border-color:var(--accent);border-width:2px}
-.protocol-badge{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 10px;border-radius:100px;margin-bottom:14px}
-.protocol-badge.primary{background:var(--accent-glow);color:var(--accent-deep)}
-.protocol-badge.secondary{background:var(--teal-soft);color:var(--teal)}
-.protocol-badge.variety{background:var(--coral-soft);color:var(--coral)}
-.protocol-badge.foundation{background:var(--green-soft);color:#15803D}
-.protocol-card h3{font-size:20px;font-weight:700;margin-bottom:6px;color:var(--text)}
-.protocol-spec{font-size:14px;color:var(--accent-deep);font-weight:600;margin-bottom:10px}
-.protocol-card p{font-size:14px;line-height:1.6;color:var(--text-secondary)}
-.protocol-result{margin-top:14px;padding-top:14px;border-top:1px solid var(--border);font-size:13px;color:var(--text-muted)}
-.protocol-result strong{color:var(--green);font-weight:700}
-
-.features-section{background:var(--bg)}
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.feature-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px;transition:all 0.3s}
-.feature-card:hover{border-color:var(--border-strong);box-shadow:0 8px 30px rgba(0,0,0,0.06);transform:translateY(-3px)}
-.feature-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
-.feature-icon.blue{background:var(--accent-glow)}
-.feature-icon.teal{background:var(--teal-soft)}
-.feature-icon.coral{background:var(--coral-soft)}
-.feature-icon.green{background:var(--green-soft)}
-.feature-card h3{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--text)}
-.feature-card p{font-size:14px;line-height:1.6;color:var(--text-secondary)}
-
-.comparison-section{background:var(--bg-warm)}
-.comparison-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -24px;padding:0 24px}
-.comparison-table{width:100%;min-width:700px;border-collapse:separate;border-spacing:0;background:var(--card-bg);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)}
-.comparison-table th{padding:16px 20px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);text-align:left;background:var(--bg);border-bottom:1px solid var(--border)}
-.comparison-table th.col-highlight{color:var(--accent-deep);background:var(--accent-glow)}
-.comparison-table td{padding:14px 20px;font-size:14px;color:var(--text-secondary);border-bottom:1px solid var(--border);vertical-align:middle}
-.comparison-table tr:last-child td{border-bottom:none}
-.comparison-table td:first-child{font-weight:600;color:var(--text)}
-.comparison-table td:last-child{background:rgba(14,165,233,0.03)}
-.check{color:var(--green);font-size:18px;font-weight:700}
-.cross{color:#D4D4D4;font-size:18px}
-.partial{color:#F59E0B;font-size:14px;font-weight:500}
-
-.stats-bar{background:var(--text);padding:56px 24px}
-.stats-bar-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center}
-.stat-item h4{font-family:var(--font-display);font-size:42px;color:white;margin-bottom:4px}
-.stat-item p{font-size:14px;color:rgba(255,255,255,0.55);max-width:220px;margin:0 auto;line-height:1.5}
-
-.how-section{background:var(--bg)}
+/* HOW */
 .how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:step}
-.how-step{position:relative;padding:28px 24px;counter-increment:step}
-.how-step::before{content:counter(step);font-family:var(--font-display);font-size:64px;line-height:1;display:block;margin-bottom:12px;color:rgba(14,165,233,0.15)}
-.how-step h3{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--text)}
-.how-step p{font-size:14px;line-height:1.6;color:var(--text-secondary)}
+.how-step{padding:28px 24px;counter-increment:step}
+.how-step::before{content:counter(step);font-family:var(--serif);font-size:64px;line-height:1;display:block;margin-bottom:12px;color:rgba(48,209,88,.15)}
+.how-step h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.how-step p{font-size:14px;line-height:1.6;color:var(--text-sec)}
 
-.cta-section{background:var(--bg);text-align:center;padding:100px 24px}
-.cta-section .section-title{max-width:600px;margin:0 auto 16px}
-.cta-section .section-sub{margin:0 auto 40px;max-width:480px}
-.cta-section .email-form{margin:0 auto;max-width:440px;justify-content:center}
-.cta-section .form-note{text-align:center}
-.cta-section .form-success{margin:0 auto}
+/* PROTOCOLS */
+.proto-sec{background:var(--bg-card)}
+.proto-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.proto{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:28px 24px;transition:all .3s}
+.proto:hover{border-color:var(--border2);box-shadow:0 8px 30px rgba(0,0,0,.3);transform:translateY(-2px)}
+.proto.feat{border-color:var(--green);border-width:2px}
+.proto-badge{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 10px;border-radius:100px;margin-bottom:14px}
+.proto-badge.p{background:var(--green-bg);color:var(--green)}
+.proto-badge.s{background:var(--blue-bg);color:var(--blue)}
+.proto-badge.v{background:var(--red-bg);color:var(--red)}
+.proto-badge.f{background:var(--blue-bg);color:var(--blue)}
+.proto h3{font-size:20px;font-weight:700;margin-bottom:6px}
+.proto-spec{font-size:14px;color:var(--green);font-weight:600;margin-bottom:10px}
+.proto p{font-size:14px;line-height:1.6;color:var(--text-sec)}
+.proto-res{margin-top:14px;padding-top:14px;border-top:1px solid var(--border);font-size:13px;color:var(--text-dim)}
+.proto-res strong{color:var(--green);font-weight:700}
 
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:32px 28px;transition:all .3s}
+.feat-card:hover{border-color:var(--border2);box-shadow:0 8px 30px rgba(0,0,0,.3);transform:translateY(-3px)}
+.feat-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.feat-icon.g{background:var(--green-bg)}
+.feat-icon.b{background:var(--blue-bg)}
+.feat-icon.r{background:var(--red-bg)}
+.feat-icon.o{background:var(--orange-bg)}
+.feat-card h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.feat-card p{font-size:14px;line-height:1.6;color:var(--text-sec)}
+
+/* STATS */
+.stats{background:var(--bg-card);padding:56px 24px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-in{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center}
+.stat h4{font-family:var(--serif);font-size:42px;color:var(--green);margin-bottom:4px}
+.stat p{font-size:14px;color:var(--text-dim);max-width:220px;margin:0 auto;line-height:1.5}
+
+/* WHAT IT DOES */
+.what-sec{background:var(--bg-card);padding:80px 24px}
+.what-list{max-width:720px}
+.what-item{display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid var(--border)}
+.what-item:last-child{border-bottom:none}
+.what-ico{font-size:26px;flex-shrink:0;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:var(--bg);border-radius:12px}
+.what-item h3{font-size:18px;font-weight:700;margin-bottom:4px}
+.what-item p{font-size:14px;line-height:1.6;color:var(--text-sec)}
+
+/* CTA */
+.cta{background:var(--bg);text-align:center;padding:100px 24px}
+.cta .sec-title{max-width:600px;margin:0 auto 16px}
+.cta .sec-sub{margin:0 auto 40px;max-width:480px}
+.cta .email-form{margin:0 auto;max-width:440px;justify-content:center}
+.cta .form-note{text-align:center}
+.cta .form-ok{margin:0 auto}
+
+/* FOOTER */
 footer{padding:40px 24px;border-top:1px solid var(--border);text-align:center}
-footer p{font-size:13px;color:var(--text-muted)}
-footer a{color:var(--text-muted);text-decoration:none}
-footer a:hover{color:var(--text-secondary)}
+footer p{font-size:13px;color:var(--text-dim);line-height:1.8}
+footer a{color:var(--text-dim);text-decoration:none;margin:0 12px}
+footer a:hover{color:var(--text-sec)}
+.foot-links{margin-bottom:12px}
 
+/* RESPONSIVE */
 @media(max-width:900px){
 .hero{grid-template-columns:1fr;padding:120px 24px 60px;gap:50px}
-.hero-content{max-width:100%}.hero-visual{order:-1}
-.phone-frame{width:240px}.float-card.top-right{right:0}.float-card.bottom-left{left:0}
-.features-grid{grid-template-columns:1fr 1fr}.protocols-grid{grid-template-columns:1fr}
-.how-steps{grid-template-columns:1fr;gap:16px}.stats-bar-inner{grid-template-columns:1fr;gap:24px}
-.problem-grid{grid-template-columns:1fr}
+.hero-text{max-width:100%}.hero-vis{order:-1}
+.phone{width:240px}.fc.tr{right:0}.fc.bl{left:0}
+.feat-grid{grid-template-columns:1fr 1fr}.proto-grid{grid-template-columns:1fr}
+.how-steps{grid-template-columns:1fr;gap:16px}.stats-in{grid-template-columns:1fr;gap:24px}
+.prob-grid{grid-template-columns:1fr}
 }
 @media(max-width:600px){
 .hero h1{font-size:36px}.email-form{flex-direction:column}
-.email-form button{width:100%;padding:16px}.features-grid{grid-template-columns:1fr}
-.hero-visual{display:none}.section-title{font-size:30px}
-.nav-cta{padding:8px 16px;font-size:13px}
+.email-form button{width:100%;padding:16px}.feat-grid{grid-template-columns:1fr}
+.hero-vis{display:none}.sec-title{font-size:30px}
+.nav-btn{padding:8px 16px;font-size:13px}
 }
-
-.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
-.fade-up.visible{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
 
-<nav id="nav">
-<div class="nav-inner">
-<a href="#" class="logo"><div class="logo-mark">V2</div>VO2 Plan</a>
-<a href="#signup" class="nav-cta">Get Early Access</a>
+<nav>
+<div class="nav-in">
+<a href="#" class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAADaklEQVR4nO1VbWiVVRz/nZfnPK9dd1/3xiidozk1ddmNaGUiV2tMg4ETLEUmOAlkQUWwD5ZR0Yck+hBBGVJgSGXkKvwgQQaK5PZBqeCy6WwN1rZsNu/W3X2e55w+XHfd5nPHlhJ92O/T/znn//x+5/9y/gdYxCL+WzAGSu8uJQFI8c3iW/NgpiDsls00AGjebT+yQRACTdzSZXzhSoQWDMKtqQ9Ku67ZH30pCl6WTQsBFtPggexKwlkukoci0RUagfQy8uIHmdHTE9chjRDVTbbnZf7kFupwcF+dP6tef8Udz0hCoNRtbIHs8cfF5s8Slz/M9hzPuBk/vkaraXOWVU6W/OJWOOBlcjSNk0e83/pUIk727Wf1D9OtqdzIsE8IpJwrNQCBCNOdA2VLm+xZe8/9sGTzC9ahY+buV/VZ/3Uc1E90mgC5vcdmLFAGKNS13jN2wev7ZlwLUcpRmdIfO1wCqMwI6b2kenvI0AAoI+1HrGg50wQME2++losnyLp6JuXsPg7o6vKkfvlEFoA7JqWHhrftB9s1zWLiXm047fX/qkpX81A527EXLS9qbo5k/wagzp5TNbUU0xokj4Aiu6Ny5R6jdIMORUJVZOJ3dTUt72vUb2TVxKA/0EurNml1jdrRT/m6pPvWcV3mlA7y0Fq/di39+iuazc6odkAEg+cm46v4n91ups8b/N77rvWvoUt+9XbrxrCSrhy54vsWX7pFnO90D7e56W4/3e3/9KMMVZFTJ6XnKaiAXpoCASEQDnumq6ziCaOwXL0t1DZW+ei7JQAIJds7Ywf6o/H7tYJD80v6wWMmgm7DzAgUQJDL+KdbR1OfRKqabACEY6gryxxvrN8DoKQav+ZOeN4fPT7XAGBbh9i4i7xzYJLxuebKtDAoAMRX6y0/l1akTACUk+Qbodh6fSogY027nXdreF50XDCcCA08flFQDgCxVaK5K1G20Sjmtn6fuf+MZYUpsPApm590sZVi65l4osEAQKdynjce2GU/eypkhgNac2Ea0Trx1LexWFIHQPjNxRUtTvMXJWaY/Xv2GRq1IvV5JFp/swY1TzuNH0eMO2efrhGpFZuORkqT+vImO/V+xJh3ZuZVeMKgfISrRd1e2xuXF9/LZK/7+bl71zDrsHf0WBbVyJPO+Uov4v+IfwBrtxPMpbxZgwAAAABJRU5ErkJggg==" alt="VO2 Plan">VO2 Plan</a>
+<a href="#signup" class="nav-btn">Get Early Access</a>
 </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-<div class="hero-content fade-up">
-<div class="hero-badge"><span class="hero-badge-dot"></span>Coming Soon — iOS</div>
+<div class="hero-text">
+<div class="badge"><span class="badge-dot"></span>Coming Soon — iOS</div>
 <h1>Your watch shows the number. We give you <em>the plan.</em></h1>
-<p class="hero-sub">VO2 Plan turns your VO2 max score into a structured, science-backed training program built for longevity — not race day. Guided intervals, Zone 2 sessions, and real progress tracking.</p>
+<p class="hero-sub">VO2 Plan turns your VO2 max score into a structured training program built for longevity — not race day. Guided intervals, Zone 2 sessions, and real progress tracking.</p>
 <form class="email-form" id="heroForm">
 <input type="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
 <button type="submit">Join Waitlist</button>
 </form>
 <p class="form-note">Free to join. Be first when we launch.</p>
-<div class="form-success" id="heroSuccess"><p>&#10003; You're on the list. We'll be in touch soon.</p></div>
+<div class="form-ok" id="heroOk"><p>&#10003; You're on the list. We'll be in touch soon.</p></div>
 </div>
-<div class="hero-visual fade-up" style="transition-delay:0.15s">
-<div class="float-card top-right">
-<div class="float-card-label">8-Week Trend</div>
-<div class="float-card-value green">+2.3</div>
-<div class="float-card-sub">mL/kg/min gained</div>
+<div class="hero-vis">
+<div class="fc tr">
+<div class="fc-lbl">8-Week Trend</div>
+<div class="fc-val g">+2.3</div>
+<div class="fc-sub">mL/kg/min gained</div>
 </div>
-<div class="float-card bottom-left">
-<div class="float-card-label">Next Workout</div>
-<div class="float-card-value teal">4x4</div>
-<div class="float-card-sub">Norwegian intervals</div>
+<div class="fc bl">
+<div class="fc-lbl">Next Workout</div>
+<div class="fc-val b">4x4</div>
+<div class="fc-sub">Norwegian intervals</div>
 </div>
-<div class="phone-frame">
+<div class="phone">
 <div class="phone-notch"></div>
 <div class="phone-score">
-<div class="phone-score-label">Your VO2 Max</div>
-<div class="phone-score-value">38.4</div>
+<div class="phone-score-lbl">Your VO2 Max</div>
+<div class="phone-score-val">38.4</div>
 <div class="phone-score-unit">mL/kg/min</div>
 </div>
-<div class="phone-percentile"><span>Top 42% for your age — Above Average</span></div>
+<div class="phone-pct"><span>Top 42% for your age — Above Average</span></div>
 <div class="phone-chart">
 <svg viewBox="0 0 240 80" fill="none">
-<defs><linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0EA5E9" stop-opacity="0.15"/><stop offset="100%" stop-color="#0EA5E9" stop-opacity="0"/></linearGradient></defs>
-<path d="M0,60 Q20,55 40,52 T80,48 T120,42 T160,38 T200,32 T240,26" stroke="#0EA5E9" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-<path d="M0,60 Q20,55 40,52 T80,48 T120,42 T160,38 T200,32 T240,26 L240,80 L0,80Z" fill="url(#chartGrad)"/>
-<circle cx="240" cy="26" r="4" fill="#0EA5E9"/>
+<defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#30D158" stop-opacity=".15"/><stop offset="100%" stop-color="#30D158" stop-opacity="0"/></linearGradient></defs>
+<path d="M0,60 Q20,55 40,52 T80,48 T120,42 T160,38 T200,32 T240,26" stroke="#30D158" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<path d="M0,60 Q20,55 40,52 T80,48 T120,42 T160,38 T200,32 T240,26 L240,80 L0,80Z" fill="url(#cg)"/>
+<circle cx="240" cy="26" r="4" fill="#30D158"/>
 </svg>
 </div>
-<div class="phone-workout">
-<div class="phone-workout-header"><span class="phone-workout-title">Wed — Norwegian 4x4</span><span class="phone-workout-tag hiit">HIIT</span></div>
-<div class="phone-workout-detail">4 x 4min @ 85-95% HRmax - 3min recovery</div>
+<div class="phone-wo">
+<div class="phone-wo-hd"><span class="phone-wo-title">Wed — Norwegian 4x4</span><span class="phone-wo-tag hiit">HIIT</span></div>
+<div class="phone-wo-det">4 x 4min @ 85-95% HRmax · 3min recovery</div>
 </div>
-<div class="phone-workout">
-<div class="phone-workout-header"><span class="phone-workout-title">Thu — Zone 2 Base</span><span class="phone-workout-tag z2">Zone 2</span></div>
-<div class="phone-workout-detail">50 min - conversational pace - 60-70% HRmax</div>
+<div class="phone-wo">
+<div class="phone-wo-hd"><span class="phone-wo-title">Thu — Zone 2 Base</span><span class="phone-wo-tag z2">Zone 2</span></div>
+<div class="phone-wo-det">50 min · conversational pace · 60-70% HRmax</div>
 </div>
-<div class="phone-workout">
-<div class="phone-workout-header"><span class="phone-workout-title">Sat — 30/30 Repeats</span><span class="phone-workout-tag intervals">Intervals</span></div>
-<div class="phone-workout-detail">20 x 30s hard / 30s easy</div>
+<div class="phone-wo">
+<div class="phone-wo-hd"><span class="phone-wo-title">Sat — 30/30 Repeats</span><span class="phone-wo-tag int">Intervals</span></div>
+<div class="phone-wo-det">20 x 30s hard / 30s easy</div>
 </div>
 </div>
 </div>
 </section>
 
-<div class="problem-section">
-<div class="problem-inner">
-<div class="section-label fade-up">The Problem</div>
-<h2 class="section-title fade-up">You have the score.<br>You don't have a system.</h2>
-<div class="section-sub fade-up">Most people see their VO2 max on their wrist and hit the same wall:</div>
-<div class="problem-grid">
-<div class="problem-card fade-up">
-<span class="problem-emoji">&#129300;</span>
+<!-- PROBLEM -->
+<div class="prob">
+<div class="prob-in">
+<div class="sec-lbl">The Problem</div>
+<h2 class="sec-title">You have the score.<br>You don't have a system.</h2>
+<p class="sec-sub">Most people see their VO2 max on their wrist and hit the same wall:</p>
+<div class="prob-grid">
+<div class="prob-card">
+<span class="prob-emoji">&#129300;</span>
 <h3>"Is this good or bad?"</h3>
 <p>Your watch shows a number with no context. Is 36 good for a 45-year-old? What percentile? What does it mean for your longevity?</p>
 </div>
-<div class="problem-card fade-up" style="transition-delay:0.08s">
-<span class="problem-emoji">&#129335;</span>
+<div class="prob-card">
+<span class="prob-emoji">&#129335;</span>
 <h3>"How do I improve it?"</h3>
 <p>No app gives you an actual plan. You're left Googling interval protocols and piecing together advice from Reddit threads and YouTube videos.</p>
 </div>
-<div class="problem-card fade-up" style="transition-delay:0.16s">
-<span class="problem-emoji">&#128200;</span>
+<div class="prob-card">
+<span class="prob-emoji">&#128200;</span>
 <h3>"Is what I'm doing working?"</h3>
 <p>You exercise regularly but can't tell if your cardiovascular fitness is actually improving over weeks and months. You need a trend, not a snapshot.</p>
 </div>
@@ -270,21 +274,22 @@ footer a:hover{color:var(--text-secondary)}
 </div>
 </div>
 
-<section class="how-section">
-<div class="section-inner">
-<div class="section-label fade-up">The Solution</div>
-<h2 class="section-title fade-up">A training plan that moves<br>your number up</h2>
-<div class="section-sub fade-up">Three steps. No lab required. No guesswork.</div>
+<!-- HOW IT WORKS -->
+<section class="sec">
+<div class="sec-in">
+<div class="sec-lbl">The Solution</div>
+<h2 class="sec-title">A training plan that moves<br>your number up</h2>
+<p class="sec-sub">Three steps. No lab required. No guesswork.</p>
 <div class="how-steps">
-<div class="how-step fade-up">
+<div class="how-step">
 <h3>See where you stand</h3>
 <p>VO2 Plan reads your score from Apple HealthKit and tells you exactly what it means — your percentile for your age and sex, and why it matters for longevity.</p>
 </div>
-<div class="how-step fade-up" style="transition-delay:0.1s">
-<h3>Follow a proven plan</h3>
-<p>Get a personalized weekly schedule based on your fitness level and available days. The app combines Zone 2 base-building with high-intensity intervals using protocols backed by decades of research.</p>
+<div class="how-step">
+<h3>Follow a structured plan</h3>
+<p>Get a weekly schedule based on your fitness level and available days. The app combines Zone 2 base-building with high-intensity intervals using established training protocols.</p>
 </div>
-<div class="how-step fade-up" style="transition-delay:0.2s">
+<div class="how-step">
 <h3>Watch it climb</h3>
 <p>Track your VO2 max trend over weeks and months alongside resting heart rate, HRV, and recovery. The plan adapts as you improve — progressively raising your aerobic ceiling.</p>
 </div>
@@ -292,187 +297,177 @@ footer a:hover{color:var(--text-secondary)}
 </div>
 </section>
 
-<section class="protocols-section">
-<div class="section-inner">
-<div class="section-label fade-up">Training Protocols</div>
-<h2 class="section-title fade-up">Not just one workout.<br>A complete training system.</h2>
-<div class="section-sub fade-up">VO2 Plan uses a polarized 80/20 approach — 80% low-intensity base building, 20% high-intensity intervals — rotating across proven protocols.</div>
-<div class="protocols-grid">
-<div class="protocol-card featured fade-up">
-<span class="protocol-badge primary">Primary Protocol</span>
+<!-- PROTOCOLS -->
+<section class="sec proto-sec">
+<div class="sec-in">
+<div class="sec-lbl">Training Protocols</div>
+<h2 class="sec-title">Not just one workout.<br>A complete training system.</h2>
+<p class="sec-sub">VO2 Plan uses a polarized 80/20 approach — 80% low-intensity base building, 20% high-intensity intervals — rotating across established protocols.</p>
+<div class="proto-grid">
+<div class="proto feat">
+<span class="proto-badge p">Primary Protocol</span>
 <h3>Norwegian 4x4</h3>
-<div class="protocol-spec">4 x 4 min @ 85-95% HRmax - 3 min recovery</div>
-<p>The gold standard. Four 4-minute intervals at near-max effort with active recovery. The 4-minute duration sustains peak cardiac output long enough to drive real adaptation.</p>
-<div class="protocol-result">Research shows <strong>7-13% VO2 max improvement</strong> in 8 weeks</div>
+<div class="proto-spec">4 x 4 min @ 85-95% HRmax · 3 min recovery</div>
+<p>Four 4-minute intervals at near-max effort with active recovery. The 4-minute duration sustains peak cardiac output long enough to drive real adaptation.</p>
+<div class="proto-res">In one study, participants saw <strong>~7% VO2 max improvement</strong> in 8 weeks (Helgerud et al., 2007)</div>
 </div>
-<div class="protocol-card fade-up" style="transition-delay:0.08s">
-<span class="protocol-badge secondary">Build-Up Protocol</span>
+<div class="proto">
+<span class="proto-badge s">Build-Up Protocol</span>
 <h3>5x3 Intervals</h3>
-<div class="protocol-spec">5 x 3 min @ 90-95% HRmax - 3 min recovery</div>
+<div class="proto-spec">5 x 3 min @ 90-95% HRmax · 3 min recovery</div>
 <p>Shorter, sharper intervals at slightly higher intensity. An excellent stepping stone for building up to the 4x4, or a variation to break through plateaus.</p>
 </div>
-<div class="protocol-card fade-up" style="transition-delay:0.16s">
-<span class="protocol-badge variety">Variety Protocol</span>
+<div class="proto">
+<span class="proto-badge v">Variety Protocol</span>
 <h3>30/30 Repeats</h3>
-<div class="protocol-spec">12-20 x 30s hard / 30s easy</div>
-<p>Short bursts that accumulate massive time near VO2 max because your heart rate never fully drops between efforts. Feels more manageable — perfect for building consistency.</p>
+<div class="proto-spec">12-20 x 30s hard / 30s easy</div>
+<p>Short bursts that accumulate time near VO2 max because your heart rate never fully drops between efforts. Feels more manageable — great for building consistency.</p>
 </div>
-<div class="protocol-card fade-up" style="transition-delay:0.24s">
-<span class="protocol-badge foundation">Foundation</span>
+<div class="proto">
+<span class="proto-badge f">Foundation</span>
 <h3>Zone 2 Base Sessions</h3>
-<div class="protocol-spec">45-60 min @ 60-70% HRmax - conversational pace</div>
+<div class="proto-spec">45-60 min @ 60-70% HRmax · conversational pace</div>
 <p>The essential 80% of your training. Builds mitochondrial density and fat oxidation capacity. Without this aerobic foundation, high-intensity work can't deliver its full benefit.</p>
 </div>
 </div>
 </div>
 </section>
 
-<section class="features-section">
-<div class="section-inner">
-<div class="section-label fade-up">Features</div>
-<h2 class="section-title fade-up">Everything your VO2 max<br>score has been missing</h2>
-<div class="section-sub fade-up">Not just a dashboard. A training companion.</div>
-<div class="features-grid">
-<div class="feature-card fade-up">
-<div class="feature-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg></div>
+<!-- FEATURES -->
+<section class="sec">
+<div class="sec-in">
+<div class="sec-lbl">Features</div>
+<h2 class="sec-title">Everything your VO2 max<br>score has been missing</h2>
+<p class="sec-sub">Not just a dashboard. A training companion.</p>
+<div class="feat-grid">
+<div class="feat-card">
+<div class="feat-icon g"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#30D158" stroke-width="2"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg></div>
 <h3>Longevity Context</h3>
-<p>Your percentile ranking for your age and sex, plus what the research says your score means for longevity and long-term health. Not just a number — a story.</p>
+<p>Your percentile ranking for your age and sex, plus what the research says your score means for longevity and long-term health.</p>
 </div>
-<div class="feature-card fade-up" style="transition-delay:0.05s">
-<div class="feature-icon teal"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+<div class="feat-card">
+<div class="feat-icon b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A84FF" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
 <h3>Adaptive Training Plan</h3>
-<p>Periodized schedule that adjusts to your progress. Base, build, and peak phases with automatic deload weeks. Miss a session? The plan recalibrates.</p>
+<p>Periodized schedule that adjusts to your progress. Base, build, and peak phases with automatic deload weeks.</p>
 </div>
-<div class="feature-card fade-up" style="transition-delay:0.1s">
-<div class="feature-icon coral"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97066" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div>
+<div class="feat-card">
+<div class="feat-icon r"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF453A" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div>
 <h3>Guided Workout Timer</h3>
-<p>Real-time heart rate zones, audio cues, and haptic feedback for every interval. Press start and follow along — the app tells you when to push and when to recover.</p>
+<p>Live heart rate zones, audio cues, and haptic feedback for every interval. The app tells you when to push and when to recover.</p>
 </div>
-<div class="feature-card fade-up" style="transition-delay:0.15s">
-<div class="feature-icon green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-<h3>Zone 2 Coaching</h3>
-<p>Live heart rate feedback during base sessions so you know instantly if you're in the aerobic sweet spot, going too hard, or not pushing enough.</p>
+<div class="feat-card">
+<div class="feat-icon g"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#30D158" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+<h3>Apple Watch Companion</h3>
+<p>Start workouts from your wrist. Live heart rate streaming feeds real-time zone data back to your phone for accurate guidance.</p>
 </div>
-<div class="feature-card fade-up" style="transition-delay:0.2s">
-<div class="feature-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
+<div class="feat-card">
+<div class="feat-icon b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A84FF" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
 <h3>Multi-Metric Tracking</h3>
-<p>VO2 max trend over time, plus resting heart rate, HRV, and heart rate recovery. The full picture of your cardiovascular fitness, all from your existing wearable data.</p>
+<p>VO2 max trend over time, plus resting heart rate, HRV, and heart rate recovery — all from your existing wearable data.</p>
 </div>
-<div class="feature-card fade-up" style="transition-delay:0.25s">
-<div class="feature-icon teal"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+<div class="feat-card">
+<div class="feat-icon o"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF9F0A" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
 <h3>Smart Progression</h3>
-<p>Hit every interval in zone? Next session gets harder. Fall short? The plan dials back. Your training matches your actual fitness — not a static template.</p>
+<p>Hit every interval in zone? Next session gets harder. Fall short? The plan dials back. Your training matches your actual fitness.</p>
 </div>
 </div>
 </div>
 </section>
 
-<div class="stats-bar">
-<div class="stats-bar-inner">
-<div class="stat-item fade-up">
-<h4>7-13%</h4>
-<p>VO2 max improvement in 8 weeks with the Norwegian 4x4 protocol</p>
+<!-- STATS -->
+<div class="stats">
+<div class="stats-in">
+<div class="stat">
+<h4>~7%</h4>
+<p>VO2 max improvement in 8 weeks with the Norwegian 4x4 protocol (Helgerud et al., 2007)</p>
 </div>
-<div class="stat-item fade-up" style="transition-delay:0.1s">
+<div class="stat">
 <h4>2x / week</h4>
 <p>Optimal interval frequency — more isn't better, consistency is</p>
 </div>
-<div class="stat-item fade-up" style="transition-delay:0.2s">
+<div class="stat">
 <h4>80/20</h4>
 <p>Polarized split used by elite endurance athletes worldwide</p>
 </div>
 </div>
 </div>
 
-<section class="comparison-section">
-<div class="section-inner">
-<div class="section-label fade-up">Why VO2 Plan</div>
-<h2 class="section-title fade-up">Other apps show you a number.<br>We show you what to do about it.</h2>
-<div class="section-sub fade-up">There are apps that track and apps that train. Only VO2 Plan does both.</div>
-<div class="comparison-wrapper fade-up">
-<table class="comparison-table">
-<thead><tr>
-<th>What you need</th><th>Wearables alone</th><th>Training apps</th><th>Other VO2 apps</th><th class="col-highlight">VO2 Plan</th>
-</tr></thead>
-<tbody>
-<tr><td>Understand your VO2 max score</td><td><span class="partial">Number only</span></td><td><span class="cross">&#10005;</span></td><td><span class="partial">Basic</span></td><td><span class="check">&#10003;</span></td></tr>
-<tr><td>Longevity context for your age</td><td><span class="cross">&#10005;</span></td><td><span class="cross">&#10005;</span></td><td><span class="cross">&#10005;</span></td><td><span class="check">&#10003;</span></td></tr>
-<tr><td>Structured plan to improve it</td><td><span class="cross">&#10005;</span></td><td><span class="partial">Athlete-focused</span></td><td><span class="cross">&#10005;</span></td><td><span class="check">&#10003;</span></td></tr>
-<tr><td>Guided interval timer with HR zones</td><td><span class="cross">&#10005;</span></td><td><span class="partial">Generic</span></td><td><span class="cross">&#10005;</span></td><td><span class="check">&#10003;</span></td></tr>
-<tr><td>Multiple science-backed protocols</td><td><span class="cross">&#10005;</span></td><td><span class="cross">&#10005;</span></td><td><span class="partial">1 protocol</span></td><td><span class="check">&#10003;</span></td></tr>
-<tr><td>Adaptive progression</td><td><span class="cross">&#10005;</span></td><td><span class="partial">Manual</span></td><td><span class="cross">&#10005;</span></td><td><span class="check">&#10003;</span></td></tr>
-<tr><td>Built for longevity, not racing</td><td><span class="cross">&#10005;</span></td><td><span class="cross">&#10005;</span></td><td><span class="cross">&#10005;</span></td><td><span class="check">&#10003;</span></td></tr>
-</tbody>
-</table>
+<!-- WHAT IT DOES -->
+<section class="what-sec">
+<div class="sec-in">
+<div class="sec-lbl">What VO2 Plan Does</div>
+<h2 class="sec-title">One app. Everything you need<br>to improve your VO2 max.</h2>
+<div class="what-list">
+<div class="what-item">
+<div class="what-ico">&#9889;</div>
+<div>
+<h3>Reads your VO2 max from Apple HealthKit</h3>
+<p>Shows your current score, ACSM percentile for your age and sex, and tracks your trend over months — not just a snapshot.</p>
+</div>
+</div>
+<div class="what-item">
+<div class="what-ico">&#128197;</div>
+<div>
+<h3>Gives you a 12-week training plan</h3>
+<p>Periodized schedule mixing Zone 2 base sessions with high-intensity intervals. Base phase, build phase, and automatic deload weeks — configured to your fitness level and available days.</p>
+</div>
+</div>
+<div class="what-item">
+<div class="what-ico">&#9201;</div>
+<div>
+<h3>Guides you through every workout</h3>
+<p>Interval timer with live heart rate zone display from your Apple Watch. Audio cues tell you when to push and when to recover. Norwegian 4x4, 5x3, 30/30, and Zone 2 protocols built in.</p>
+</div>
+</div>
+<div class="what-item">
+<div class="what-ico">&#9968;</div>
+<div>
+<h3>Works from your Apple Watch</h3>
+<p>Start workouts from your wrist. The watch runs an HKWorkoutSession for accurate heart rate streaming — your workouts count toward Activity Rings and save to Apple Health.</p>
+</div>
+</div>
+<div class="what-item">
+<div class="what-ico">&#128200;</div>
+<div>
+<h3>Adapts as you improve</h3>
+<p>Hit your intervals in zone? Next session gets harder. Fall short? The plan dials back. Progressive overload without the guesswork.</p>
+</div>
+</div>
 </div>
 </div>
 </section>
 
-<section class="cta-section" id="signup">
-<div class="section-inner">
-<div class="section-label fade-up">Early Access</div>
-<h2 class="section-title fade-up">Stop staring at the number.<br>Start improving it.</h2>
-<p class="section-sub fade-up">Join the waitlist for early access to VO2 Plan on iOS. We'll notify you the moment it launches.</p>
-<form class="email-form fade-up" id="ctaForm">
+<!-- CTA -->
+<section class="cta" id="signup">
+<div class="sec-in">
+<div class="sec-lbl">Early Access</div>
+<h2 class="sec-title">Stop staring at the number.<br>Start improving it.</h2>
+<p class="sec-sub">Join the waitlist for early access to VO2 Plan on iOS. We'll notify you the moment it launches.</p>
+<form class="email-form" id="ctaForm">
 <input type="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
 <button type="submit">Join Waitlist</button>
 </form>
-<p class="form-note fade-up">No spam. Unsubscribe anytime.</p>
-<div class="form-success" id="ctaSuccess"><p>&#10003; You're on the list. We'll be in touch soon.</p></div>
+<p class="form-note">No spam. Unsubscribe anytime.</p>
+<div class="form-ok" id="ctaOk"><p>&#10003; You're on the list. We'll be in touch soon.</p></div>
 </div>
 </section>
 
 <footer>
-<p>&#169; 2026 VO2 Plan. All rights reserved.</p>
+<div class="foot-links">
+<a href="/privacy">Privacy Policy</a>
+<a href="/terms">Terms of Service</a>
+<a href="/cdn-cgi/l/email-protection#c8a0ada4a4a788bea7fab8a4a9a6e6aba7a5">Contact</a>
+</div>
+<p>&copy; 2026 VO2 Plan. All rights reserved.<br>VO2 Plan is not medical advice. Consult your physician before beginning any exercise program.</p>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-var nav=document.getElementById("nav");
-window.addEventListener("scroll",function(){
-nav.classList.toggle("scrolled",window.scrollY>20);
-});
-
-var observer=new IntersectionObserver(function(entries){
-entries.forEach(function(entry){
-if(entry.isIntersecting)entry.target.classList.add("visible");
-});
-},{threshold:0.1,rootMargin:"0px 0px -40px 0px"});
-document.querySelectorAll(".fade-up").forEach(function(el){observer.observe(el)});
-
-var supabaseClient=window.supabase.createClient(
-"https://otcdtomlaftdioqvqnpb.supabase.co",
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90Y2R0b21sYWZ0ZGlvcXZxbnBiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1MzgyODAsImV4cCI6MjA5MDExNDI4MH0.KEDtGg9Iz40k6biLaH9m3tL1m43Henpb1OnfGBw5MCU"
-);
-
-function handleSubmit(formId,successId){
-var form=document.getElementById(formId);
-var success=document.getElementById(successId);
-form.addEventListener("submit",async function(e){
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function handleSubmit(fId,sId){
+var f=document.getElementById(fId),s=document.getElementById(sId);
+f.addEventListener('submit',function(e){
 e.preventDefault();
-var btn=form.querySelector("button");
-var email=form.querySelector("input[type=email]").value;
-btn.textContent="Joining...";
-btn.disabled=true;
-var result=await supabaseClient.from("waitlist").insert([{email:email}]);
-if(result.error&&result.error.code==="23505"){
-form.style.display="none";
-success.innerHTML="<p>You are already on the list!</p>";
-success.classList.add("show");
-}else if(result.error){
-btn.textContent="Join Waitlist";
-btn.disabled=false;
-alert("Something went wrong. Please try again.");
-}else{
-form.style.display="none";
-success.classList.add("show");
-}
-var note=form.parentElement.querySelector(".form-note");
-if(note)note.style.display="none";
-});
-}
-handleSubmit("heroForm","heroSuccess");
-handleSubmit("ctaForm","ctaSuccess");
-</script>
-</body>
-</html>
+var email=f.querySelector('input[type="email"]').value;
+console.log('Waitlist signup:',email);
+f.style.display='none';
+s.classList.add('show');
+var n=f.parentElement.querySelec
