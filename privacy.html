@@ -105,7 +105,7 @@ footer a:hover{color:var(--text-secondary)}
 <p><strong>We do not sell, share, or transfer your HealthKit data to any third party.</strong> We do not use HealthKit data for advertising or marketing purposes. This is both our policy and an Apple requirement for all apps that access HealthKit.</p>
 
 <h3>App preferences and progress</h3>
-<p>Your fitness level selection, training plan progress, exercise type preferences, and app settings are stored locally using on-device storage (AsyncStorage). This data does not leave your device.</p>
+<p>Your fitness level selection, training plan progress, exercise type preferences, and app settings are stored locally on your device. This data does not leave your device.</p>
 </div>
 
 <div class="divider"></div>
@@ -115,10 +115,10 @@ footer a:hover{color:var(--text-secondary)}
 <h2>3. Data we do collect</h2>
 
 <h3>Waitlist email (website only)</h3>
-<p>If you join our waitlist on vo2plan.com, we collect your email address. This is stored in Supabase (our database provider) and used solely to notify you when VO2 Plan launches. We do not share your email with third parties. You can request removal at any time by emailing <a href="mailto:hello@vo2plan.com" style="color:var(--blue);text-decoration:none">hello@vo2plan.com</a>.</p>
+<p>If you join our waitlist on vo2plan.com, we collect your email address. This is stored in a hosted database service and used solely to notify you when VO2 Plan launches. We do not share your email with third parties. You can request removal at any time by emailing <a href="mailto:hello@vo2plan.com" style="color:var(--blue);text-decoration:none">hello@vo2plan.com</a>.</p>
 
 <h3>Subscription status</h3>
-<p>If you subscribe to VO2 Plan Premium, your purchase is processed by Apple through the App Store. We use RevenueCat to manage subscription status. RevenueCat receives an anonymous subscriber identifier — it does not receive your name, email, health data, or any personally identifying information. Apple handles all payment processing, billing, and refunds.</p>
+<p>If you subscribe to VO2 Plan Premium, your purchase is processed by Apple through the App Store. We use a third-party service to manage subscription status. This service receives only an anonymous subscriber identifier and purchase status — it does not receive your name, email, health data, or any personally identifying information. Apple handles all payment processing, billing, and refunds.</p>
 </div>
 
 <div class="divider"></div>
@@ -140,14 +140,14 @@ footer a:hover{color:var(--text-secondary)}
 <h3>Apple HealthKit</h3>
 <p>On-device health data framework. Governed by <a href="https://www.apple.com/legal/privacy/" style="color:var(--blue);text-decoration:none">Apple's Privacy Policy</a>.</p>
 
-<h3>RevenueCat</h3>
-<p>Subscription management. Receives only an anonymous subscriber ID and purchase status. Governed by <a href="https://www.revenuecat.com/privacy" style="color:var(--blue);text-decoration:none">RevenueCat's Privacy Policy</a>.</p>
+<h3>Subscription Management Provider</h3>
+<p>We use a third-party service to manage subscription status. This service receives only an anonymous subscriber identifier and purchase status — it does not receive your name, email, health data, or any personally identifying information. Apple handles all payment processing. Details about our subscription provider's data practices are available upon request at <a href="mailto:hello@vo2plan.com" style="color:var(--blue);text-decoration:none">hello@vo2plan.com</a>.</p>
 
-<h3>Supabase</h3>
-<p>Database for waitlist emails (website only). Governed by <a href="https://supabase.com/privacy" style="color:var(--blue);text-decoration:none">Supabase's Privacy Policy</a>.</p>
+<h3>Waitlist Database</h3>
+<p>Waitlist email addresses submitted on our website are stored in a hosted database service. This data is used solely to notify you when VO2 Plan launches and is not shared with third parties. Details about our database provider's data practices are available upon request at <a href="mailto:hello@vo2plan.com" style="color:var(--blue);text-decoration:none">hello@vo2plan.com</a>.</p>
 
-<h3>Vercel</h3>
-<p>Website hosting for vo2plan.com. Standard web server logs (IP address, browser type, pages visited) may be collected by Vercel's infrastructure. Governed by <a href="https://vercel.com/legal/privacy-policy" style="color:var(--blue);text-decoration:none">Vercel's Privacy Policy</a>.</p>
+<h3>Website Hosting</h3>
+<p>Our website is served by a third-party hosting provider. Standard web server logs (IP address, browser type, pages visited) may be collected by the hosting infrastructure. Details about our hosting provider's data practices are available upon request at <a href="mailto:hello@vo2plan.com" style="color:var(--blue);text-decoration:none">hello@vo2plan.com</a>.</p>
 </div>
 
 <div class="divider"></div>
